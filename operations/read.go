@@ -20,3 +20,17 @@ func ReadAll(dbPath string) (map[string]any, error) {
 
 	return data, nil
 }
+
+func GetValueByKeyPath(dbPath string, zeroKey string, keys ...any) (any, error) {
+	data, err := ReadAll(dbPath)
+	if err != nil {
+		return nil, err
+	}
+
+	var value any = data[zeroKey]
+
+	// further logic here
+	// ...
+
+	return value, nil
+}
