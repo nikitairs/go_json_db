@@ -5,7 +5,11 @@ import (
 )
 
 func main() {
-	dbName := initialize()
+	dbName, err := initialize()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 	fmt.Printf("Initialized JSON DB connection - %v\n", dbName)
 
 }
