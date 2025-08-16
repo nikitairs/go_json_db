@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"json_db/config"
 	"os"
 	"strings"
 )
@@ -19,10 +20,10 @@ func initialize() (string, error) {
 		}
 
 		// check if db exists, create new if not
-		dbPath := fmt.Sprintf("database/%v", dbName)
+		dbPath := fmt.Sprintf("%v%v", config.DB_BASE_DIR, dbName)
 		fileData, err := os.ReadFile(dbPath)
 		if err != nil {
-			fmt.Printf("DB [%v] does not exist, creating new...\n", dbPath)
+			fmt.Printf("DB [%v] does not exist, creating new...\n", dbName)
 
 			os.Mkdir("database", 0o755)
 			if err = os.WriteFile(dbPath, []byte(`{}`), 0o644); err != nil {
