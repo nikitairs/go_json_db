@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-	fmt.Println("Go JSON DB")
+	dbName := initialize()
+	fmt.Printf("Initialized JSON DB connection - %v\n", dbName)
+
 }
